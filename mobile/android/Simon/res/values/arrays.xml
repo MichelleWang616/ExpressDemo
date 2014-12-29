@@ -43,4 +43,9 @@
         <item>延庆区</item>
         <item>房山区</item>
     </string-array>
+    <string-array name="street_prefix">
+        <item>路</item>
+        <item>街道</item>
+        <item>大道</item>
+    </string-array>
 </resources>
