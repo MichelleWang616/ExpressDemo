@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Simon</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="my_order">我的快递单</string>
+    <string name="send_express">寄快递</string>
+    <string name="my_address">我的地址</string>
+    <string name="express_company">快递公司</string>
+    <string name="notification_center">消息中心</string>
+    <string name="settings">设置</string>
+    <string name="shanghai">上海</string>
+    <string name="beijing">北京</string>
+    <string name="no_pre_courier">没有上一位快递员了。</string>
+    <string name="no_next_courier">没有下一位快递员了。</string>
+    <string name="getting_info">正在获取信息。</string>
+    <string name="confirm">确认</string>
+    <string name="request_submitted">请求已经提交，请等待快递员来取件。</string>
+    <string name="no_matched_courier_please_choose_manully">没有快递员响应，您可以尝试手动查找。</string>
+    <string name="courier"> 快递员 </string>
+    <string name="can_come_to_fetch"> 可以来取件。</string>
+	<string name="reply_from_courier">快递员响应</string>
+	<string name="previous">上一个</string>
+	<string name="next">下一个</string>
+	<string name="makesure_enough_space">请检查设备是否有足够的存储空间。</string>
+	<string name="check_network">请检查网络是否可用。</string>
+	<string name="submit">提交</string>
+	<string name="no_express_order">暂无快递记录</string>
+	<string name="choose_from_address">请选择寄件地址:</string>
+	<string name="city">城市:</string>
+	<string name="district">行政区:</string>
+	<string name="input_detailed_street_address">请输入详细街道信息:</string>
+	<string name="input_sender_name">请输入寄件人姓名:</string>
+	<string name="input_sender_phone">请输入寄件人电话:</string>
+	<string name="input_receiver_name">请输入收件人姓名:</string>
+	<string name="input_receiver_phone">请输入收件人电话:</string>
+	<string name="choose_to_address">请输入收件地址:</string>
+	<string name="comments">附言:</string>
+	<string name="logout">退出登录</string>
+	<string name="from_address">寄件地址:</string>
+	<string name="to_address">收件地址:</string>
+	<string name="request_id">请求编号:</string>
+</resources>

@@ -39,7 +39,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_marginTop="30dp"
 		    android:layout_gravity="center_horizontal"
-		    android:text="提交"
+		    android:text="@string/submit"
 	        android:textAppearance="@android:style/TextAppearance.Medium"
 		    android:padding="10dp" />
 	</LinearLayout>

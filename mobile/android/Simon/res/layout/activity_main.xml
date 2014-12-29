@@ -23,12 +23,12 @@
         android:orientation="horizontal">
         <Button 
             android:id="@+id/button_express_order"
-            android:text="我的快递"
+            android:text="@string/my_order"
             android:layout_width="0dp" 
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <Button android:id="@+id/button_send_express"
-            android:text="寄快递"
+            android:text="@string/send_express"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>

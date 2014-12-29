@@ -48,10 +48,10 @@ public final class ExpressManager {
         }
 
         if (!StorageManager.isExternalStorageAvailable()) {
-            Toast.makeText(context, "请确保存储卡有剩余的空间。", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.makesure_enough_space, Toast.LENGTH_LONG).show();
         }
         if (!NetworkManager.isOnline(context)) {
-            Toast.makeText(context, "请检查网络是否可用。", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.check_network, Toast.LENGTH_LONG).show();
         }
 
         mContext = context.getApplicationContext();

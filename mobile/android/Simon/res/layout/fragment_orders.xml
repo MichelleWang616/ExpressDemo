@@ -7,7 +7,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_centerInParent="true"
-	    android:text="您还没有快递纪录！"
+	    android:text="@string/no_express_order"
 	    android:textSize="20sp" />
 	<ListView
 	    android:id="@+id/order_list"

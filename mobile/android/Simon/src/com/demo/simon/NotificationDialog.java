@@ -38,7 +38,7 @@ public class NotificationDialog extends DialogFragment {
             builder.setTitle(mTitle);
         }
         builder.setMessage(mMessage)
-                .setPositiveButton("上一个", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.reply_from_courier, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -47,7 +47,7 @@ public class NotificationDialog extends DialogFragment {
                         }
                     }
                 })
-                .setNeutralButton("确认", new DialogInterface.OnClickListener() {
+                .setNeutralButton(R.string.previous, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -56,7 +56,7 @@ public class NotificationDialog extends DialogFragment {
                         }
                     }
                 })
-                .setNegativeButton("下一个", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.next, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

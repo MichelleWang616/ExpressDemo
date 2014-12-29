@@ -57,23 +57,23 @@ public class SlideMenuFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if (mUserOptionsView != null) {
             UserOptionAdapter adapter = new UserOptionAdapter(getActivity());
-            adapter.add(new UserOptionItem(UserOption.MY_ORDERS, "我的快递单", android.R.drawable.ic_menu_search));
-            adapter.add(new UserOptionItem(UserOption.MY_ADDRESS, "我的地址", android.R.drawable.ic_menu_search));
-            adapter.add(new UserOptionItem(UserOption.EXPRESS_COMPANY, "快递公司", android.R.drawable.ic_menu_search));
-            adapter.add(new UserOptionItem(UserOption.MY_NORIFICATION, "通知中心", android.R.drawable.ic_menu_search));
-            adapter.add(new UserOptionItem(UserOption.SETTING, "设置", android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.MY_ORDERS, R.string.my_order, android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.MY_ADDRESS, R.string.my_address, android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.EXPRESS_COMPANY, R.string.express_company, android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.MY_NORIFICATION, R.string.notification_center, android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.SETTING, R.string.settings, android.R.drawable.ic_menu_search));
             mUserOptionsView.setAdapter(adapter);
         }
     }
 
     private class UserOptionItem {
         public UserOption tag;
-        public String label;
+        public int labelRes;
         public int iconRes;
 
-        public UserOptionItem(UserOption tag, String label, int iconRes) {
+        public UserOptionItem(UserOption tag, int labelRes, int iconRes) {
             this.tag = tag;
-            this.label = label;
+            this.labelRes = labelRes;
             this.iconRes = iconRes;
         }
     }
@@ -92,7 +92,7 @@ public class SlideMenuFragment extends Fragment {
             ImageView icon = (ImageView) convertView.findViewById(R.id.row_icon);
             icon.setImageResource(option.iconRes);
             TextView title = (TextView) convertView.findViewById(R.id.row_title);
-            title.setText(option.label);
+            title.setText(option.labelRes);
             convertView.setTag(option);
             return convertView;
         }

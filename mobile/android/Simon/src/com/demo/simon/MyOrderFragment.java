@@ -98,15 +98,15 @@ public class MyOrderFragment extends Fragment {
             }
             OrderItem option = getItem(position);
             TextView id = (TextView) convertView.findViewById(R.id.order_id);
-            id.setText("快递编号：" + option.orderId);
+            id.setText(getContext().getString(R.string.request_id) + option.orderId);
             TextView time = (TextView) convertView.findViewById(R.id.order_time);
             time.setText(option.orderTime);
             TextView status = (TextView) convertView.findViewById(R.id.order_status);
             status.setText(option.orderStatus);
             TextView fromAddress = (TextView) convertView.findViewById(R.id.from_address);
-            fromAddress.setText("发件地址： " + option.fromAddress);
+            fromAddress.setText(getContext().getString(R.string.from_address) + option.fromAddress);
             TextView toAddress = (TextView) convertView.findViewById(R.id.to_address);
-            toAddress.setText("收件地址：" + option.toAddress);
+            toAddress.setText(getContext().getString(R.string.to_address) + option.toAddress);
             TextView title = (TextView) convertView.findViewById(R.id.courier_name);
             title.setText(option.courierName);
 

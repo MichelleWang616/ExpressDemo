@@ -247,7 +247,44 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class string {
         public static final int action_settings=0x7f080001;
         public static final int app_name=0x7f080000;
+        public static final int beijing=0x7f08000a;
+        public static final int can_come_to_fetch=0x7f080012;
+        public static final int check_network=0x7f080017;
+        public static final int choose_from_address=0x7f08001a;
+        public static final int choose_to_address=0x7f080022;
+        public static final int city=0x7f08001b;
+        public static final int comments=0x7f080023;
+        public static final int confirm=0x7f08000e;
+        public static final int courier=0x7f080011;
+        public static final int district=0x7f08001c;
+        public static final int express_company=0x7f080006;
+        public static final int from_address=0x7f080025;
+        public static final int getting_info=0x7f08000d;
         public static final int hello_world=0x7f080002;
+        public static final int input_detailed_street_address=0x7f08001d;
+        public static final int input_receiver_name=0x7f080020;
+        public static final int input_receiver_phone=0x7f080021;
+        public static final int input_sender_name=0x7f08001e;
+        public static final int input_sender_phone=0x7f08001f;
+        public static final int logout=0x7f080024;
+        public static final int makesure_enough_space=0x7f080016;
+        public static final int my_address=0x7f080005;
+        public static final int my_order=0x7f080003;
+        public static final int next=0x7f080015;
+        public static final int no_express_order=0x7f080019;
+        public static final int no_matched_courier_please_choose_manully=0x7f080010;
+        public static final int no_next_courier=0x7f08000c;
+        public static final int no_pre_courier=0x7f08000b;
+        public static final int notification_center=0x7f080007;
+        public static final int previous=0x7f080014;
+        public static final int reply_from_courier=0x7f080013;
+        public static final int request_id=0x7f080027;
+        public static final int request_submitted=0x7f08000f;
+        public static final int send_express=0x7f080004;
+        public static final int settings=0x7f080008;
+        public static final int shanghai=0x7f080009;
+        public static final int submit=0x7f080018;
+        public static final int to_address=0x7f080026;
     }
     public static final class style {
         /** 

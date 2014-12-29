@@ -57,6 +57,9 @@ public class SendExpressFragment extends Fragment {
     private List<Courier> mRespondedCourier = null;
     private String mRequestId;
     private int mCurrentCourierIndex = 0;
+    
+    private String mCityShanghai = "";
+    private String mCityBeijing = "";
 
     public static String getFragmentTag() {
         return "SendExpress";
@@ -88,6 +91,9 @@ public class SendExpressFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        
+        mCityShanghai = this.getString(R.string.shanghai);
+        mCityBeijing = this.getString(R.string.beijing);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.cities,
                 android.R.layout.simple_spinner_item);
@@ -98,13 +104,13 @@ public class SendExpressFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long arg3) {
                 String city = parent.getItemAtPosition(position).toString();
-                if ("上海市".equals(city)) {
+                if (mCityShanghai.equals(city)) {
                     ArrayAdapter<CharSequence> districtAdapter = ArrayAdapter.createFromResource(getActivity(),
                             R.array.districts_shanghai,
                             android.R.layout.simple_spinner_item);
                     mDistrictSpinner.setAdapter(districtAdapter);
                 }
-                if ("北京市".equals(city)) {
+                if (mCityBeijing.equals(city)) {
                     ArrayAdapter<CharSequence> districtAdapter = ArrayAdapter.createFromResource(getActivity(),
                             R.array.districts_beijing,
                             android.R.layout.simple_spinner_item);
@@ -125,13 +131,13 @@ public class SendExpressFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long arg3) {
                 String city = parent.getItemAtPosition(position).toString();
-                if ("上海市".equals(city)) {
+                if (mCityShanghai.equals(city)) {
                     ArrayAdapter<CharSequence> districtAdapter = ArrayAdapter.createFromResource(getActivity(),
                             R.array.districts_shanghai,
                             android.R.layout.simple_spinner_item);
                     mDistrictSpinner2.setAdapter(districtAdapter);
                 }
-                if ("北京市".equals(city)) {
+                if (mCityBeijing.equals(city)) {
                     ArrayAdapter<CharSequence> districtAdapter = ArrayAdapter.createFromResource(getActivity(),
                             R.array.districts_beijing,
                             android.R.layout.simple_spinner_item);
@@ -245,10 +251,10 @@ public class SendExpressFragment extends Fragment {
         public void onDialogPositiveBtnClicked(DialogFragment dialog) {
             mNotificationDialog.dismiss();
             if (mCurrentCourierIndex <= 0) {
-                Toast.makeText(getActivity(), "没有前一位快递员信息。", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.no_pre_courier, Toast.LENGTH_LONG).show();
                 return;
             }
-            Toast.makeText(getActivity(), "获取前一位快递员信息，请耐心等候。", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.getting_info, Toast.LENGTH_LONG).show();
             mCurrentCourierIndex--;
             mProgressBar.setVisibility(View.VISIBLE);
             mProgressBar.postDelayed(new Runnable() {
@@ -269,8 +275,8 @@ public class SendExpressFragment extends Fragment {
             // confirm
             AlertDialogFragment alert = new AlertDialogFragment();
             alert.setCancelable(false);
-            alert.setTitle("确认");
-            alert.setMessage("确认请求已发送，请耐心等候快递员上门收取快递。");
+            alert.setTitle(alert.getString(R.string.confirm));
+            alert.setMessage(alert.getString(R.string.request_submitted));
             alert.setHasNegativeBtn(false);
             alert.setButton("确认", null, new AlertDialogListener() {
 
@@ -299,10 +305,10 @@ public class SendExpressFragment extends Fragment {
             mNotificationDialog.dismiss();
             int count = mRespondedCourier.size();
             if (mCurrentCourierIndex >= count - 1) {
-                Toast.makeText(getActivity(), "没有下一位快递员信息。", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.no_next_courier, Toast.LENGTH_LONG).show();
                 return;
             }
-            Toast.makeText(getActivity(), "获取下一位快递员信息，请耐心等候。", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.getting_info, Toast.LENGTH_LONG).show();
             mCurrentCourierIndex++;
             mProgressBar.setVisibility(View.VISIBLE);
             mProgressBar.postDelayed(new Runnable() {
@@ -322,10 +328,10 @@ public class SendExpressFragment extends Fragment {
         if (mRespondedCourier == null || mRespondedCourier.size() <= 0) {
             final AlertDialogFragment alert = new AlertDialogFragment();
             alert.setCancelable(false);
-            alert.setTitle("确认");
-            alert.setMessage("当前没有匹配的快递员响应，请手动选择。");
+            alert.setTitle(alert.getString(R.string.confirm));
+            alert.setMessage(alert.getString(R.string.no_matched_courier_please_choose_manully));
             alert.setHasNegativeBtn(false);
-            alert.setButton("确认", null, new AlertDialogListener() {
+            alert.setButton(alert.getString(R.string.confirm), null, new AlertDialogListener() {
 
                 @Override
                 public void onDialogPositiveBtnClicked(DialogFragment dialog) {
@@ -349,8 +355,8 @@ public class SendExpressFragment extends Fragment {
         }
 
         Courier currentCourier = mRespondedCourier.get(mCurrentCourierIndex);
-        mNotificationDialog.setMessage(currentCourier.getCompanyName() + "快递员 "
-                + currentCourier.getName() + " 可以收快递。");
+        mNotificationDialog.setMessage(currentCourier.getCompanyName() + this.getString(R.string.courier)
+                + currentCourier.getName() + this.getString(R.string.can_come_to_fetch));
 
         mNotificationDialog.show(getActivity().getFragmentManager(), "notification");
         // updateNotificationDialogBtnStatus();
