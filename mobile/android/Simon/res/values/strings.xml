@@ -41,4 +41,5 @@
 	<string name="from_address">From Address:</string>
 	<string name="to_address">To Address:</string>
 	<string name="request_id">Request ID:</string>
+	<string name="available_couriers">Available Couriers</string>
 </resources>

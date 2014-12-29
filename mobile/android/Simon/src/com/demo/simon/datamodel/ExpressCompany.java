@@ -22,13 +22,13 @@ public class ExpressCompany {
     private final static String DISPLAY_NAME = "display_name";
 
     private final String mId;
-    private final String mInernalName;
+    private final String mInternalName;
     private final String mDisplayName;
     private Bitmap mLogoBitmap;
 
     private ExpressCompany(String id, String internalName, String displayName) {
         mId = id;
-        mInernalName = internalName;
+        mInternalName = internalName;
         mDisplayName = displayName;
     }
 
