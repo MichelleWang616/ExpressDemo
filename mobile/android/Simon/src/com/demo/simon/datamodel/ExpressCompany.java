@@ -1,10 +1,19 @@
 
 package com.demo.simon.datamodel;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
+
+import com.demo.simon.NetworkManager;
+import com.demo.simon.StorageManager;
 
 public class ExpressCompany {
 
@@ -15,6 +24,7 @@ public class ExpressCompany {
     private final String mId;
     private final String mInernalName;
     private final String mDisplayName;
+    private Bitmap mLogoBitmap;
 
     private ExpressCompany(String id, String internalName, String displayName) {
         mId = id;
@@ -28,6 +38,10 @@ public class ExpressCompany {
 
     public String getDisplayName() {
         return mDisplayName;
+    }
+
+    public Bitmap getLogoBitmap() {
+        return mLogoBitmap;
     }
 
     public static ExpressCompany fromJSONData(JSONObject object) {
@@ -45,7 +59,16 @@ public class ExpressCompany {
         return company;
     }
 
-    public void downloadLogo(Context context) {
+    public void downloadLogo(Context context) throws ClientProtocolException, IOException {
+        File logoFile = StorageManager.getCompanyLogoFile(context, mId);
+        if (logoFile.exists()) {
+            logoFile.delete();
+        }
+        String logoUrl = NetworkManager.getExpressCompanyLogoUrl(mId);
+        NetworkManager.downloadToLocal(context, logoUrl, logoFile);
 
+        if (logoFile.exists()) {
+            mLogoBitmap = StorageManager.loadImage(context, Uri.fromFile(logoFile));
+        }
     }
 }

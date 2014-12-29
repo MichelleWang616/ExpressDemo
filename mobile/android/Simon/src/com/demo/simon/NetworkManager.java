@@ -142,7 +142,7 @@ public class NetworkManager {
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode == HttpStatus.SC_OK) {
                 HttpEntity entity = response.getEntity();
-                verifyContentType(context, method, entity);
+                // verifyContentType(context, method, entity);
                 resultStr = EntityUtils.toString(entity);
             }
         } catch (ClientProtocolException e) {

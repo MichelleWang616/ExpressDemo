@@ -11,15 +11,32 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
 
 public class StorageManager {
     private static final long MIN_AVAILABLE_EXTERNAL_MEMORY_SIZE = 1048576 * 50; // 50MB
 
-    public static File getDownloadedCompanyProfile(Context context) {
-        // return new File(getStorageFolder(), "installed.json");
-        return new File(context.getFilesDir(), "profile.json");
+    private static String sDownloadCompanyPath = null;
+
+    public static void initialize(Context context) {
+        File appDataFile = context.getFilesDir();
+        sDownloadCompanyPath = appDataFile + "/company";
+    }
+
+    public static File getCompanyFolder() {
+        return getDir(sDownloadCompanyPath);
+    }
+
+    public static File getDownloadedCompanyProfile() {
+        return new File(getCompanyFolder(), "profile.json");
+    }
+
+    public static File getCompanyLogoFile(Context context, String companyId) {
+        return new File(getCompanyFolder(), companyId + ".jpg");
     }
 
     public static boolean isExternalStorageAvailable() {
@@ -74,6 +91,30 @@ public class StorageManager {
         }
     }
 
+    public static Bitmap loadImage(Context context, Uri imageUri) throws IOException {
+        Bitmap bmp = null;
+        InputStream istream = null;
+        try {
+            istream = context.getContentResolver().openInputStream(imageUri);
+            bmp = BitmapFactory.decodeStream(istream);
+            if (bmp == null) {
+                throw new IOException("Cannot decode the bitmap from the input stream.");
+            }
+        } catch (SecurityException se) {
+            se.printStackTrace();
+            throw new IOException(se);
+        } finally {
+            if (istream != null) {
+                try {
+                    istream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return bmp;
+    }
+
     private static void readString(InputStream stream, StringBuilder sb) throws IOException {
         BufferedReader buf = new BufferedReader(new InputStreamReader(stream), 8192);
         String readString = null;
@@ -84,5 +125,14 @@ public class StorageManager {
         } finally {
             buf.close();
         }
+    }
+
+    private static File getDir(String path)
+    {
+        File dir = new File(path);
+        if (!dir.exists() || !dir.isDirectory()) {
+            dir.mkdirs();
+        }
+        return dir;
     }
 }

@@ -9,5 +9,6 @@ public class SimonApplication extends Application {
     public void onCreate() {
         super.onCreate();
         ExpressManager.getInstance().initialize(getApplicationContext());
+        StorageManager.initialize(getApplicationContext());
     }
 }

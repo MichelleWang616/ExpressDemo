@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +41,10 @@ public final class ExpressManager {
 
     public Context getContext() {
         return mContext;
+    }
+
+    public List<ExpressCompany> getCompanies() {
+        return mExpressCampanies;
     }
 
     public void initialize(Context context) {
@@ -91,7 +96,7 @@ public final class ExpressManager {
             if (result != null) {
                 newMD5 = Utility.generateMD5OfString(result);
             }
-            File file = StorageManager.getDownloadedCompanyProfile(mContext);
+            File file = StorageManager.getDownloadedCompanyProfile();
             String oldMD5 = null;
             if (file != null && file.exists()) {
                 try {
@@ -190,7 +195,15 @@ public final class ExpressManager {
                 if (this.isCancelled()) {
                     return null;
                 }
-                company.downloadLogo(mContext);
+                try {
+                    company.downloadLogo(mContext);
+                } catch (ClientProtocolException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
             return null;
         }
