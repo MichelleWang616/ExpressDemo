@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/shadow_width"
+        android:drawableTop="@drawable/default_avatar"
+        android:text="登录"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:gravity="center_horizontal"
+        android:background="@drawable/background" />
+    <ImageView 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow_width"
+        android:drawable="@drawable/shadow_horizontal" />
+	<ListView 
+	    android:id="@+id/user_options"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:paddingLeft="@dimen/list_padding"
+	    android:paddingRight="@dimen/list_padding" />
+</LinearLayout>

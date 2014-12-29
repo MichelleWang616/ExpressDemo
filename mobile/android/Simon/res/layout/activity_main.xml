@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+	<ImageView
+	    android:id="@+id/user_center"
+	    android:layout_width="match_parent"
+      	android:layout_height="@dimen/top_bar_height"
+       	android:background="@drawable/background"
+	    android:src="@drawable/default_avatar"
+	    android:scaleType="fitStart" />
+    <FrameLayout 
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout 
+        style="@android:style/ButtonBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+        <Button 
+            android:id="@+id/button_express_order"
+            android:text="我的快递"
+            android:layout_width="0dp" 
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button android:id="@+id/button_send_express"
+            android:text="寄快递"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="slidingmenu_offset">500dp</dimen>
+    <dimen name="top_bar_height">120dp</dimen>
+</resources>
