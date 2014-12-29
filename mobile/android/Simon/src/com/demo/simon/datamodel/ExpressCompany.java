@@ -26,7 +26,7 @@ public class ExpressCompany {
     private final String mDisplayName;
     private Bitmap mLogoBitmap;
 
-    private ExpressCompany(String id, String internalName, String displayName) {
+    public ExpressCompany(String id, String internalName, String displayName) {
         mId = id;
         mInternalName = internalName;
         mDisplayName = displayName;
@@ -62,7 +62,7 @@ public class ExpressCompany {
     public void downloadLogo(Context context) throws ClientProtocolException, IOException {
         File logoFile = StorageManager.getCompanyLogoFile(context, mId);
         if (logoFile.exists()) {
-            logoFile.delete();
+            return;
         }
         String logoUrl = NetworkManager.getExpressCompanyLogoUrl(mId);
         NetworkManager.downloadToLocal(context, logoUrl, logoFile);

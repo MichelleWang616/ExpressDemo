@@ -46,4 +46,7 @@
 	<string name="unit_m">m</string>
 	<string name="switch_to_listview">Switch To List</string>
 	<string name="switch_to_mapview">Switch To Map</string>
+	<string name="option_no_limitation">Select All</string>
+	<string name="no_available_courier">No matched courier found, please search again.</string>
+	<string name="current_location">Current Location</string>
 </resources>

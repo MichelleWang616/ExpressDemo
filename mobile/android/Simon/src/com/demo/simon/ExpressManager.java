@@ -108,26 +108,24 @@ public final class ExpressManager {
                 }
             }
             if (newMD5 != null && !newMD5.equals(oldMD5)) {
-                JSONArray objects = null;
-                try {
-                    objects = new JSONArray(result);
-                } catch (JSONException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                if (objects == null) {
-                    return;
-                }
+
                 try {
                     StorageManager.writeStringToFile(file, result);
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                mExpressCampanies = parseExpressCompany(objects);
-                // download thumbnails
-                downloadCompanyLogos();
             }
+            JSONArray objects = null;
+            try {
+                objects = new JSONArray(result);
+            } catch (JSONException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            mExpressCampanies = parseExpressCompany(objects);
+            // download thumbnails
+            downloadCompanyLogos();
         }
 
         @Override
@@ -145,14 +143,16 @@ public final class ExpressManager {
 
     private List<ExpressCompany> parseExpressCompany(JSONArray objects) {
         List<ExpressCompany> companies = new ArrayList<ExpressCompany>();
-        int count = objects.length();
-        for (int i = 0; i < count; i++) {
-            try {
-                JSONObject obj = objects.getJSONObject(i);
-                companies.add(ExpressCompany.fromJSONData(obj));
+        if (objects != null) {
+            int count = objects.length();
+            for (int i = 0; i < count; i++) {
+                try {
+                    JSONObject obj = objects.getJSONObject(i);
+                    companies.add(ExpressCompany.fromJSONData(obj));
 
-            } catch (JSONException ex) {
-                Log.w(TAG, ex.getLocalizedMessage());
+                } catch (JSONException ex) {
+                    Log.w(TAG, ex.getLocalizedMessage());
+                }
             }
         }
         return companies;

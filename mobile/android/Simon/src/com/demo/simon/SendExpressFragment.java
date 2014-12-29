@@ -33,6 +33,7 @@ import com.demo.simon.AlertDialogFragment.AlertDialogListener;
 import com.demo.simon.DownloadTask.DownloadTaskListener;
 import com.demo.simon.NotificationDialog.NotificationDialogListener;
 import com.demo.simon.datamodel.Courier;
+import com.demo.simon.utility.LocationUtility;
 import com.demo.simon.utility.Utility;
 
 public class SendExpressFragment extends Fragment {
@@ -174,13 +175,13 @@ public class SendExpressFragment extends Fragment {
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("device_id", Utility.getDeviceSerial()));
                 params.add(new BasicNameValuePair("user_name", ""));
-                params.add(new BasicNameValuePair("location", Utility.getGPSLocation()));
+                String location = LocationUtility.latlng.latitude + ", " + LocationUtility.latlng.longitude;
+                params.add(new BasicNameValuePair("location", location));
                 params.add(new BasicNameValuePair("max_distance", String.valueOf(Utility.getAllowedMaxDistance())));
                 params.add(new BasicNameValuePair("from_address", senderAddress));
                 params.add(new BasicNameValuePair("to_address", receiverAddress));
-                String[] streetInfo = Utility.getCurrentLocationStreetInfo();
-                params.add(new BasicNameValuePair("street", streetInfo[0]));
-                params.add(new BasicNameValuePair("street_number", streetInfo[1]));
+                params.add(new BasicNameValuePair("street", LocationUtility.street));
+                params.add(new BasicNameValuePair("street_number", ""));
                 params.add(new BasicNameValuePair("company_id", "-1"));
                 params.add(new BasicNameValuePair("comments", comments));
                 mAutoRequestCourierTask.setPostParams(params);
@@ -212,7 +213,7 @@ public class SendExpressFragment extends Fragment {
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
-            
+
             mRespondedCourier = new ArrayList<Courier>();
             if (courierObjects != null && courierObjects.length() != 0) {
 
@@ -226,17 +227,17 @@ public class SendExpressFragment extends Fragment {
                     }
                 }
             }
-//            mProgressBar.postDelayed(new Runnable() {
-//
-//                @Override
-//                public void run() {
-//                    mProgressBar.setVisibility(View.INVISIBLE);
-//                    showNotificationDialog();
-//                }
-//
-//            }, 3000);
-        	Intent i = new Intent(MainActivity.getInstance(), CourierMapActivity.class);
-        	MainActivity.getInstance().startActivity(i);
+            // mProgressBar.postDelayed(new Runnable() {
+            //
+            // @Override
+            // public void run() {
+            // mProgressBar.setVisibility(View.INVISIBLE);
+            // showNotificationDialog();
+            // }
+            //
+            // }, 3000);
+            Intent i = new Intent(MainActivity.getInstance(), ManualOrderActivity.class);
+            MainActivity.getInstance().startActivity(i);
         }
 
         @Override

@@ -19,21 +19,8 @@ public class Utility {
     }
 
     // TODO
-    public static String getGPSLocation() {
-        return "121.5258,31.219821";
-    }
-
-    // TODO
     public static long getAllowedMaxDistance() {
         return -1;
-    }
-
-    // TODO
-    public static String[] getCurrentLocationStreetInfo() {
-        String[] streedinfo = new String[2];
-        streedinfo[0] = "";
-        streedinfo[1] = "399";
-        return streedinfo;
     }
 
     public static String generateMD5OfString(String str) {

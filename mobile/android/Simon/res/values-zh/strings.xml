@@ -46,4 +46,7 @@
 	<string name="unit_m">米</string>
 	<string name="switch_to_listview">切换到列表</string>
 	<string name="switch_to_mapview">切换到地图</string>
+	<string name="option_no_limitation">没有限制</string>
+	<string name="no_available_courier">没有合适的快递员，请重新筛选。</string>
+	<string name="current_location">所在地址：</string>
 </resources>
