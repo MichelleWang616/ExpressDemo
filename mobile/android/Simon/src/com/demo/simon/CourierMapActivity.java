@@ -3,14 +3,11 @@ package com.demo.simon;
 
 import java.util.List;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +27,7 @@ import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLngBounds;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
+import com.demo.simon.data.CourierData;
 import com.demo.simon.datamodel.Courier;
 import com.demo.simon.utility.LocationUtility;
 
@@ -44,7 +42,8 @@ public class CourierMapActivity extends Activity
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            // TODO: show order's details
+        	CourierData.curSelectedCourier = SendExpressFragment.mRespondedCourier.get(position);
+        	goDetailView();
         }
 
     };
@@ -82,6 +81,12 @@ public class CourierMapActivity extends Activity
 				}
 			}
 		});
+    }
+    
+    private void goDetailView()
+    {
+    	Intent i = new Intent(MainActivity.getInstance(), CourierDetailInfoActivity.class);
+    	MainActivity.getInstance().startActivity(i);
     }
 
     private void init()
@@ -127,8 +132,10 @@ public class CourierMapActivity extends Activity
             {
                 if (arg0.isInfoWindowShown())
                 {
-                    Dialog dlg = new Dialog(CourierMapActivity.this);
-                    dlg.show();
+//                    Dialog dlg = new Dialog(CourierMapActivity.this);
+//                    dlg.show();
+                	CourierData.curSelectedCourier = (Courier)arg0.getObject();
+                	goDetailView();
                 }
                 else
                 {
@@ -147,7 +154,7 @@ public class CourierMapActivity extends Activity
     	for (Courier courier : courierList)
     	{
     		aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f).position(courier.getLatLng()).title(courier.getName())
-                    .snippet(courier.getCompanyName()).draggable(false));
+                    .snippet(courier.getCompanyName()).draggable(false)).setObject(courier);
     	}
     }
 
@@ -187,7 +194,7 @@ public class CourierMapActivity extends Activity
             company_name.setText(courier.getCompanyName());
             TextView line_distance = (TextView) convertView.findViewById(R.id.line_distance);
             Context context = parent.getContext();
-            line_distance.setText(context.getText(R.string.distance) + courier.getLineDistance() + context.getString(R.string.unit_m));
+            line_distance.setText(context.getString(R.string.distance) + courier.getLineDistance() + context.getString(R.string.unit_m));
             return convertView;
         }
     }

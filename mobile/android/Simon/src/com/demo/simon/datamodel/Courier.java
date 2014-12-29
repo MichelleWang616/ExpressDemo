@@ -68,9 +68,18 @@ public class Courier {
     public String getName() {
         return mName;
     }
+    
+    public String getSiteName() {
+    	return mSiteName;
+    }
 
     public String getCompanyName() {
         return mCompanyName;
+    }
+    
+    public String getPhone()
+    {
+    	return mPhone;
     }
     
     public String getLineDistance() {
