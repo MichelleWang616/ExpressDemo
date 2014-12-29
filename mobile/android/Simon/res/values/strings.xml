@@ -10,8 +10,8 @@
     <string name="express_company">Express Company</string>
     <string name="notification_center">Notification Center</string>
     <string name="settings">Settings</string>
-    <string name="shanghai">Shanghai</string>
-    <string name="beijing">Beijing</string>
+    <string name="shanghai">上海市</string>
+    <string name="beijing">北京市</string>
     <string name="no_pre_courier">No previous courier.</string>
     <string name="no_next_courier">No Next courier</string>
     <string name="getting_info">Getting information.</string>

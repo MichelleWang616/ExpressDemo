@@ -10,8 +10,8 @@
     <string name="express_company">快递公司</string>
     <string name="notification_center">消息中心</string>
     <string name="settings">设置</string>
-    <string name="shanghai">上海</string>
-    <string name="beijing">北京</string>
+    <string name="shanghai">上海市</string>
+    <string name="beijing">北京市</string>
     <string name="no_pre_courier">没有上一位快递员了。</string>
     <string name="no_next_courier">没有下一位快递员了。</string>
     <string name="getting_info">正在获取信息。</string>
