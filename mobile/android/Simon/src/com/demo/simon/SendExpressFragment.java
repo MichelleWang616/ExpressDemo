@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -254,10 +255,11 @@ public class SendExpressFragment extends Fragment {
             // confirm
             AlertDialogFragment alert = new AlertDialogFragment();
             alert.setCancelable(false);
-            alert.setTitle(alert.getString(R.string.confirm));
-            alert.setMessage(alert.getString(R.string.request_submitted));
+            Resources resources = getActivity().getResources();
+            alert.setTitle(resources.getString(R.string.confirm));
+            alert.setMessage(resources.getString(R.string.request_submitted));
             alert.setHasNegativeBtn(false);
-            alert.setButton("确认", null, new AlertDialogListener() {
+            alert.setButton(resources.getString(R.string.confirm), null, new AlertDialogListener() {
 
                 @Override
                 public void onDialogPositiveBtnClicked(DialogFragment dialog) {
@@ -325,40 +327,41 @@ public class SendExpressFragment extends Fragment {
     };
 
     private void showNotificationDialog() {
-        // if (mRespondedCourier == null || mRespondedCourier.size() <= 0) {
-        final AlertDialogFragment alert = new AlertDialogFragment();
-        alert.setCancelable(false);
-        alert.setTitle(alert.getString(R.string.confirm));
-        alert.setMessage(alert.getString(R.string.no_matched_courier_please_choose_manully));
-        alert.setHasNegativeBtn(false);
-        alert.setButton(alert.getString(R.string.confirm), null, new AlertDialogListener() {
+        if (mRespondedCourier == null || mRespondedCourier.size() <= 0) {
+            final AlertDialogFragment alert = new AlertDialogFragment();
+            alert.setCancelable(false);
+            Resources resources = getActivity().getResources();
+            alert.setTitle(resources.getString(R.string.confirm));
+            alert.setMessage(resources.getString(R.string.no_matched_courier_please_choose_manully));
+            alert.setHasNegativeBtn(false);
+            alert.setButton(resources.getString(R.string.confirm), null, new AlertDialogListener() {
 
-            @Override
-            public void onDialogPositiveBtnClicked(DialogFragment dialog) {
-                // redirect to manual ui
-                alert.dismiss();
-                Intent intent = new Intent(getActivity(), ManualOrderActivity.class);
-                startActivity(intent);
+                @Override
+                public void onDialogPositiveBtnClicked(DialogFragment dialog) {
+                    // redirect to manual ui
+                    alert.dismiss();
+                    Intent intent = new Intent(getActivity(), ManualOrderActivity.class);
+                    startActivity(intent);
 
-            }
+                }
 
-            @Override
-            public void onDialogNegtiveBtnClicked(DialogFragment dialog) {
-            }
+                @Override
+                public void onDialogNegtiveBtnClicked(DialogFragment dialog) {
+                }
 
-        });
-        alert.show(getActivity().getFragmentManager(), "alert");
-        // }
-        // int count = mRespondedCourier.size();
-        // if (mCurrentCourierIndex < 0 || mCurrentCourierIndex >= count) {
-        // return;
-        // }
-        //
-        // Courier currentCourier = mRespondedCourier.get(mCurrentCourierIndex);
-        // mNotificationDialog.setMessage(currentCourier.getCompanyName() + this.getString(R.string.courier)
-        // + currentCourier.getName() + this.getString(R.string.can_come_to_fetch));
-        //
-        // mNotificationDialog.show(getActivity().getFragmentManager(), "notification");
+            });
+            alert.show(getActivity().getFragmentManager(), "alert");
+        }
+        int count = mRespondedCourier.size();
+        if (mCurrentCourierIndex < 0 || mCurrentCourierIndex >= count) {
+            return;
+        }
+
+        Courier currentCourier = mRespondedCourier.get(mCurrentCourierIndex);
+        mNotificationDialog.setMessage(currentCourier.getCompanyName() + this.getString(R.string.courier)
+                + currentCourier.getName() + this.getString(R.string.can_come_to_fetch));
+
+        mNotificationDialog.show(getActivity().getFragmentManager(), "notification");
         // updateNotificationDialogBtnStatus();
     }
 

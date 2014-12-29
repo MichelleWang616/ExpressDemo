@@ -48,7 +48,6 @@ public class SlideMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.menu_list, null);
         mUserOptionsView = (ListView) rootView.findViewById(R.id.user_options);
-        mUserOptionsView.setOnItemClickListener(mOnItemClickListener);
         return rootView;
     }
 
@@ -56,11 +55,15 @@ public class SlideMenuFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (mUserOptionsView != null) {
+            mUserOptionsView.setOnItemClickListener(mOnItemClickListener);
             UserOptionAdapter adapter = new UserOptionAdapter(getActivity());
             adapter.add(new UserOptionItem(UserOption.MY_ORDERS, R.string.my_order, android.R.drawable.ic_menu_search));
-            adapter.add(new UserOptionItem(UserOption.MY_ADDRESS, R.string.my_address, android.R.drawable.ic_menu_search));
-            adapter.add(new UserOptionItem(UserOption.EXPRESS_COMPANY, R.string.express_company, android.R.drawable.ic_menu_search));
-            adapter.add(new UserOptionItem(UserOption.MY_NORIFICATION, R.string.notification_center, android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.MY_ADDRESS, R.string.my_address,
+                    android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.EXPRESS_COMPANY, R.string.express_company,
+                    android.R.drawable.ic_menu_search));
+            adapter.add(new UserOptionItem(UserOption.MY_NORIFICATION, R.string.notification_center,
+                    android.R.drawable.ic_menu_search));
             adapter.add(new UserOptionItem(UserOption.SETTING, R.string.settings, android.R.drawable.ic_menu_search));
             mUserOptionsView.setAdapter(adapter);
         }
