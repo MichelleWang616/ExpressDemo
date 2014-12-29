@@ -30,7 +30,7 @@
 	<string name="choose_from_address">Please choose from address:</string>
 	<string name="city">City:</string>
 	<string name="district">District:</string>
-	<string name="input_detailed_street_address">Please input detailed street info:</string>
+	<string name="input_detailed_street_address">Please input detailed street info</string>
 	<string name="input_sender_name">Please input sender\'s name:</string>
 	<string name="input_sender_phone">Please input sender\'s phone:</string>
 	<string name="input_receiver_name">Please input receiver\'s name:</string>
@@ -49,4 +49,5 @@
 	<string name="option_no_limitation">Select All</string>
 	<string name="no_available_courier">No matched courier found, please search again.</string>
 	<string name="current_location">Current Location</string>
+	<string name="unit_of_street_number">NO</string>
 </resources>

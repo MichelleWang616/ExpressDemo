@@ -30,7 +30,7 @@
 	<string name="choose_from_address">请选择寄件地址:</string>
 	<string name="city">城市:</string>
 	<string name="district">行政区:</string>
-	<string name="input_detailed_street_address">请输入详细街道信息:</string>
+	<string name="input_detailed_street_address">请输入详细街道信息</string>
 	<string name="input_sender_name">请输入寄件人姓名:</string>
 	<string name="input_sender_phone">请输入寄件人电话:</string>
 	<string name="input_receiver_name">请输入收件人姓名:</string>
@@ -49,4 +49,5 @@
 	<string name="option_no_limitation">没有限制</string>
 	<string name="no_available_courier">没有合适的快递员，请重新筛选。</string>
 	<string name="current_location">所在地址：</string>
+	<string name="unit_of_street_number">号/弄</string>
 </resources>

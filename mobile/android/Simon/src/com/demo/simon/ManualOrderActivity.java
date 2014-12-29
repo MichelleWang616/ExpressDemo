@@ -163,6 +163,7 @@ public class ManualOrderActivity extends Activity {
                         alert.show(getFragmentManager(), "alert");
                     } else {
                         Intent intent = new Intent(ManualOrderActivity.this, CourierMapActivity.class);
+                        intent.putExtra(Utility.INTENT_DATA_REQUEST_ID, mRequestId);
                         startActivity(intent);
                     }
 

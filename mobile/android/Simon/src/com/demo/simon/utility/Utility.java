@@ -12,7 +12,7 @@ public class Utility {
 
     private final static String PREFERENCE_COMPANY_PROFILE_MD5 = "preference.company.profile.md5";
 
-    public final static String INTENT_DATA_COMPANY_ID = "intent.data.company.id";
+    public final static String INTENT_DATA_REQUEST_ID = "intent.data.request.id";
 
     public static String getDeviceSerial() {
         return android.os.Build.SERIAL;

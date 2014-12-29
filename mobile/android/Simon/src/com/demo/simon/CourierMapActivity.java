@@ -1,6 +1,7 @@
 
 package com.demo.simon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -29,6 +30,7 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.demo.simon.data.CourierData;
 import com.demo.simon.datamodel.Courier;
 import com.demo.simon.utility.LocationUtility;
+import com.demo.simon.utility.Utility;
 
 public class CourierMapActivity extends Activity
 {
@@ -36,12 +38,16 @@ public class CourierMapActivity extends Activity
     private MapView mapView;
     private ListView mCourierList = null;
     private Button mSwitchViewBtn = null;
+    private String mRequestId = "-1";
 
     private OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            CourierData.curSelectedCourier = ManualOrderActivity.mRespondedCourier.get(position);
+            Courier currentCourier = ManualOrderActivity.mRespondedCourier.get(position);
+            List<Courier> couriers = new ArrayList<Courier>();
+            couriers.add(currentCourier);
+            CourierData.setCourierData(couriers, mRequestId, true);
             goDetailView();
         }
 
@@ -51,6 +57,8 @@ public class CourierMapActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        mRequestId = getIntent().getStringExtra(Utility.INTENT_DATA_REQUEST_ID);
 
         setContentView(R.layout.activity_courier_map);
         mapView = (MapView) findViewById(R.id.map);
@@ -134,7 +142,10 @@ public class CourierMapActivity extends Activity
                 {
                     // Dialog dlg = new Dialog(CourierMapActivity.this);
                     // dlg.show();
-                    CourierData.curSelectedCourier = (Courier) arg0.getObject();
+                    Courier currentCourier = (Courier) arg0.getObject();
+                    List<Courier> couriers = new ArrayList<Courier>();
+                    couriers.add(currentCourier);
+                    CourierData.setCourierData(couriers, mRequestId, true);
                     goDetailView();
                 }
                 else
