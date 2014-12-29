@@ -1,0 +1,38 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+obj/
+release/
+reports/
+
+# generated files
+# Specified setting, Not Applicable for other projects
+*/assets/lib/armeabi-v7a/libutil.so
+*/assets/lib/armeabi/libutil.so
+*/assets/lib/x86/libutil.so
+
+# Local configuration file (sdk path, etc)
+local.properties
+secure.properties
+
+
+# Eclipse project files
+.classpath
+.project
+.prefs
+.settings/
+
+# mergetool files
+*.orig
+
+.DS_Store
