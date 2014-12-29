@@ -1,2 +1,4 @@
 mobile/android/Simon/gen/*
 mobile/android/Simon/bin/*
+server/config/host_conn.cfg
+mobile/android/SlidingMenuLib/bin/*
