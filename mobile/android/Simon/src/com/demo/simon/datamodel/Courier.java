@@ -1,6 +1,8 @@
 
 package com.demo.simon.datamodel;
 
+import java.text.DecimalFormat;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +31,7 @@ public class Courier {
     private final double mLineDistance;
     private LatLng mLatLng = null;
 
+    private final static DecimalFormat decimalFormat  = new DecimalFormat("#0");   
     private Courier(String id, String name, String phone, String companyId,
             String companyName, String siteName, String regTime, String location, double lineDistance) {
         mId = id;
@@ -68,6 +71,10 @@ public class Courier {
 
     public String getCompanyName() {
         return mCompanyName;
+    }
+    
+    public String getLineDistance() {
+    	return decimalFormat.format(mLineDistance);
     }
 
     public static Courier fromJSONData(JSONObject object) {

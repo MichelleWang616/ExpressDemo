@@ -42,4 +42,8 @@
 	<string name="to_address">收件地址:</string>
 	<string name="request_id">请求编号:</string>
 	<string name="available_couriers">可选的快递员</string>
+	<string name="distance">距离:</string>
+	<string name="unit_m">米</string>
+	<string name="switch_to_listview">切换到列表</string>
+	<string name="switch_to_mapview">切换到地图</string>
 </resources>

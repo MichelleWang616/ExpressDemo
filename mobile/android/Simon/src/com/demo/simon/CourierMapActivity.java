@@ -3,9 +3,24 @@ package com.demo.simon;
 
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+
 import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.AMap.OnMapLoadedListener;
 import com.amap.api.maps2d.AMap.OnMarkerClickListener;
@@ -22,7 +37,18 @@ public class CourierMapActivity extends Activity
 {
     private AMap aMap;
     private MapView mapView;
+    private ListView mCourierList = null;
+    private Button mSwitchViewBtn = null;
 
+    private OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            // TODO: show order's details
+        }
+
+    };
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -31,6 +57,31 @@ public class CourierMapActivity extends Activity
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
         init();
+        
+        mCourierList = (ListView) findViewById(R.id.courier_list);
+        mCourierList.setOnItemClickListener(mOnItemClickListener);
+        
+        initListView();
+        
+        mSwitchViewBtn = (Button) findViewById(R.id.switch_view_btn);
+        mSwitchViewBtn.setOnClickListener(new View.OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				if (mCourierList.getVisibility() == View.GONE)
+				{
+					mCourierList.setVisibility(View.VISIBLE);
+					mSwitchViewBtn.setText(R.string.switch_to_mapview);
+				}
+				else
+				{
+					mCourierList.setVisibility(View.GONE);
+					mSwitchViewBtn.setText(R.string.switch_to_listview);
+				}
+			}
+		});
     }
 
     private void init()
@@ -98,5 +149,46 @@ public class CourierMapActivity extends Activity
     		aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f).position(courier.getLatLng()).title(courier.getName())
                     .snippet(courier.getCompanyName()).draggable(false));
     	}
+    }
+
+    private void initListView()
+    {
+    	 CourierAdapter adapter = new CourierAdapter(this);
+//         mCourierList.setVisibility(View.VISIBLE);
+         mCourierList.setAdapter(adapter);
+    }
+
+    private class CourierAdapter extends ArrayAdapter<Courier> {
+
+        public CourierAdapter(Context context) {
+            super(context, 0);
+        }
+
+        @Override
+		public Courier getItem(int position)
+		{
+        	return SendExpressFragment.mRespondedCourier.get(position);
+		}
+
+		@Override
+		public int getCount()
+		{
+			return SendExpressFragment.mRespondedCourier.size();
+		}
+
+		public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.courier_item, null);
+            }
+            Courier courier = SendExpressFragment.mRespondedCourier.get(position);
+            TextView courier_name = (TextView) convertView.findViewById(R.id.courier_name);
+            courier_name.setText(courier.getName());
+            TextView company_name = (TextView) convertView.findViewById(R.id.company_name);
+            company_name.setText(courier.getCompanyName());
+            TextView line_distance = (TextView) convertView.findViewById(R.id.line_distance);
+            Context context = parent.getContext();
+            line_distance.setText(context.getText(R.string.distance) + courier.getLineDistance() + context.getString(R.string.unit_m));
+            return convertView;
+        }
     }
 }

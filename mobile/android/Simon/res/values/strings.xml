@@ -42,4 +42,8 @@
 	<string name="to_address">To Address:</string>
 	<string name="request_id">Request ID:</string>
 	<string name="available_couriers">Available Couriers</string>
+	<string name="distance">Distance:</string>
+	<string name="unit_m">m</string>
+	<string name="switch_to_listview">Switch To List</string>
+	<string name="switch_to_mapview">Switch To Map</string>
 </resources>

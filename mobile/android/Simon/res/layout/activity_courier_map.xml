@@ -6,13 +6,30 @@
     <com.amap.api.maps2d.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="48dp" />
 
     <ListView
         android:id="@+id/courier_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="48dp"
         android:background="#FFECECEC"
         android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/switch_view_btn"
+            android:layout_width="140dp"
+            android:layout_height="44dp"
+            android:layout_centerInParent="true"
+            android:text="@string/switch_to_listview" >
+        </Button>
+    </RelativeLayout>
 
 </RelativeLayout>
