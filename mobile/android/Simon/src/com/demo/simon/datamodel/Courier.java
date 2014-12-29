@@ -4,6 +4,8 @@ package com.demo.simon.datamodel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.amap.api.maps2d.model.LatLng;
+
 public class Courier {
 
     private final static String ID = "id";
@@ -13,6 +15,7 @@ public class Courier {
     private final static String COMPANY_NAME = "company_name";
     private final static String SITE_NAME = "site_name";
     private final static String REG_TIME = "reg_time";
+    private final static String LOCATION = "latest_location";
     private final static String LINE_DISTANCE = "line_distance";
 
     private final String mId;
@@ -22,10 +25,12 @@ public class Courier {
     private final String mCompanyName;
     private final String mSiteName;
     private final String mRegTime;
-    private final Long mLineDistance;
+    private final String mLocation;
+    private final double mLineDistance;
+    private LatLng mLatLng = null;
 
     private Courier(String id, String name, String phone, String companyId,
-            String companyName, String siteName, String regTime, Long lineDistance) {
+            String companyName, String siteName, String regTime, String location, double lineDistance) {
         mId = id;
         mName = name;
         mPhone = phone;
@@ -33,7 +38,24 @@ public class Courier {
         mCompanyName = companyName;
         mSiteName = siteName;
         mRegTime = regTime;
+        mLocation = location;
         mLineDistance = lineDistance;
+        
+        try
+        {
+        	String[] strAll = mLocation.split("\\,");
+        	float a = Float.parseFloat(strAll[0]);
+        	float b = Float.parseFloat(strAll[1]);
+        	mLatLng = new LatLng(b, a);
+        }
+        catch(Exception ex)
+        {
+        }
+    }
+    
+    public LatLng getLatLng()
+    {
+    	return mLatLng;
     }
 
     public String getId() {
@@ -58,8 +80,9 @@ public class Courier {
             String companyName = object.getString(COMPANY_NAME);
             String siteName = object.getString(SITE_NAME);
             String regTime = object.getString(REG_TIME);
-            Long lineDistance = object.getLong(LINE_DISTANCE);
-            courier = new Courier(id, name, phone, companyId, companyName, siteName, regTime, lineDistance);
+            String location = object.getString(LOCATION);
+            double lineDistance = object.getDouble(LINE_DISTANCE);
+            courier = new Courier(id, name, phone, companyId, companyName, siteName, regTime, location, lineDistance);
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

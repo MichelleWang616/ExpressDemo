@@ -3,6 +3,7 @@ package com.demo.simon;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
+import com.amap.api.maps2d.model.LatLng;
 import com.demo.simon.utility.LocationUtility;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -103,6 +105,8 @@ AMapLocationListener, Runnable {
                 fragmentTransaction.replace(R.id.container, mSendExpressFragment, SendExpressFragment.getFragmentTag());
                 mCurrentFragmentTag = SendExpressFragment.getFragmentTag();
                 fragmentTransaction.commit();
+//            	Intent i = new Intent(MainActivity.this, CourierMapActivity.class);
+//            	MainActivity.this.startActivity(i);
             }
 
         });
@@ -179,6 +183,7 @@ AMapLocationListener, Runnable {
 			LocationUtility.district = location.getDistrict();
 			LocationUtility.city = location.getCity();
 			LocationUtility.address = location.getAddress();
+			LocationUtility.latlng = new LatLng(location.getLatitude(), location.getLongitude());
 		}
 	}
 	

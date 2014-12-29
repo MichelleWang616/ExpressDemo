@@ -55,7 +55,7 @@ public class SendExpressFragment extends Fragment {
     private Button mSubmitBtn = null;
     private ProgressBar mProgressBar = null;
 
-    private List<Courier> mRespondedCourier = null;
+    public static List<Courier> mRespondedCourier = null;
     private String mRequestId;
     private int mCurrentCourierIndex = 0;
 
@@ -212,8 +212,10 @@ public class SendExpressFragment extends Fragment {
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
+            
+            mRespondedCourier = new ArrayList<Courier>();
             if (courierObjects != null && courierObjects.length() != 0) {
-                mRespondedCourier = new ArrayList<Courier>();
+
                 int count = courierObjects.length();
                 for (int i = 0; i < count; i++) {
                     try {
@@ -224,15 +226,17 @@ public class SendExpressFragment extends Fragment {
                     }
                 }
             }
-            mProgressBar.postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    mProgressBar.setVisibility(View.INVISIBLE);
-                    showNotificationDialog();
-                }
-
-            }, 3000);
+//            mProgressBar.postDelayed(new Runnable() {
+//
+//                @Override
+//                public void run() {
+//                    mProgressBar.setVisibility(View.INVISIBLE);
+//                    showNotificationDialog();
+//                }
+//
+//            }, 3000);
+        	Intent i = new Intent(MainActivity.getInstance(), CourierMapActivity.class);
+        	MainActivity.getInstance().startActivity(i);
         }
 
         @Override

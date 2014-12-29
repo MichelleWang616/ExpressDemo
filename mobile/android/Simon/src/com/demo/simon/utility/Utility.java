@@ -31,7 +31,7 @@ public class Utility {
     // TODO
     public static String[] getCurrentLocationStreetInfo() {
         String[] streedinfo = new String[2];
-        streedinfo[0] = "浦电路";
+        streedinfo[0] = "";
         streedinfo[1] = "399";
         return streedinfo;
     }
