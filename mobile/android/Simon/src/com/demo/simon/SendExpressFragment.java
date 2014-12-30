@@ -100,6 +100,14 @@ public class SendExpressFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mAutoRequestCourierTask != null && !mAutoRequestCourierTask.isCancelled()) {
+            mAutoRequestCourierTask.cancel(true);
+        }
+    }
+
     private DownloadTask mAutoRequestCourierTask = null;
     private DownloadTaskListener mAutoRequestCourierTaskListener = new DownloadTaskListener() {
 

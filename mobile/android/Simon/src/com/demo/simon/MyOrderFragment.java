@@ -68,6 +68,14 @@ public class MyOrderFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mDownloadHistoryOrdersTask != null && !mDownloadHistoryOrdersTask.isCancelled()) {
+            mDownloadHistoryOrdersTask.cancel(true);
+        }
+    }
+
     private class OrderItem {
         public String orderId;
         public String orderTime;
