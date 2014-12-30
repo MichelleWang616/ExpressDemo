@@ -72,12 +72,12 @@ public class ManualOrderActivity extends Activity {
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("device_id", Utility.getDeviceSerial()));
                 params.add(new BasicNameValuePair("user_name", ""));
-                String location = LocationUtility.latlng.latitude + ", " + LocationUtility.latlng.longitude;
-                params.add(new BasicNameValuePair("location", location));
+                //String location = LocationUtility.latlng.latitude + ", " + LocationUtility.latlng.longitude;
+                params.add(new BasicNameValuePair("location", LocationUtility.locationString));
                 params.add(new BasicNameValuePair("max_distance", String.valueOf(Utility.getAllowedMaxDistance())));
                 params.add(new BasicNameValuePair("from_address", mUserInputAddress));
                 params.add(new BasicNameValuePair("to_address", ""));
-                params.add(new BasicNameValuePair("street", LocationUtility.street));
+                params.add(new BasicNameValuePair("street", ""));
                 params.add(new BasicNameValuePair("street_number", ""));
                 params.add(new BasicNameValuePair("company_id", company.getId()));
                 params.add(new BasicNameValuePair("comments", ""));
