@@ -52,4 +52,5 @@
 	<string name="unit_of_street_number">NO</string>
 	<string name="locating">Locating, please wait.</string>
 	<string name="search">Search</string>
+	<string name="network_not_awailable">The network is not available now, please have a check.</string>
 </resources>

@@ -8,6 +8,7 @@ import org.apache.http.NameValuePair;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DownloadTask extends AsyncTask<String, Void, String> {
     public interface DownloadTaskListener {
@@ -43,6 +44,7 @@ public class DownloadTask extends AsyncTask<String, Void, String> {
             if (mDownloadTaskListener != null) {
                 mDownloadTaskListener.onTaskCanceled();
             }
+            Toast.makeText(mContext, R.string.network_not_awailable, Toast.LENGTH_LONG).show();
         }
     }
 

@@ -52,4 +52,5 @@
 	<string name="unit_of_street_number">号/弄</string>
 	<string name="locating">正在定位中，请稍等。</string>
 	<string name="search">查找</string>
+	<string name="network_not_awailable">当前网络不可用，请检查网络连接。</string>
 </resources>

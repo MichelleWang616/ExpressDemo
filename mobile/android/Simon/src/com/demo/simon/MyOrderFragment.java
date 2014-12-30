@@ -52,6 +52,7 @@ public class MyOrderFragment extends Fragment {
         mOrderList.setOnItemClickListener(mOnItemClickListener);
         mEmptyHistoryPrompt = (TextView) rootView.findViewById(R.id.no_orders);
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(View.VISIBLE);
         return rootView;
     }
 
@@ -164,8 +165,10 @@ public class MyOrderFragment extends Fragment {
 
         @Override
         public void onTaskCanceled() {
+            mEmptyHistoryPrompt.setVisibility(View.VISIBLE);
             mProgressBar.setVisibility(View.INVISIBLE);
             if (mDownloadHistoryOrdersTask != null) {
+                mDownloadHistoryOrdersTask.setOnDownloadTaskListener(null);
                 mDownloadHistoryOrdersTask = null;
             }
         }
