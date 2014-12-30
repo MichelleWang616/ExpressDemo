@@ -73,6 +73,8 @@ public class MyOrderFragment extends Fragment {
         super.onDetach();
         if (mDownloadHistoryOrdersTask != null && !mDownloadHistoryOrdersTask.isCancelled()) {
             mDownloadHistoryOrdersTask.cancel(true);
+            mDownloadHistoryOrdersTask.setOnDownloadTaskListener(null);
+            mDownloadHistoryOrdersTask = null;
         }
     }
 
