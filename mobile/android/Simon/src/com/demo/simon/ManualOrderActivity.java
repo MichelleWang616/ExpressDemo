@@ -23,6 +23,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -43,7 +44,7 @@ public class ManualOrderActivity extends Activity {
 
     private Spinner mCompanySpinner;
     private ProgressBar mProgressBar;
-    private ImageView mSearchBtn;
+    private Button mSearchBtn;
 
     private String mUserInputAddress = "";
 
@@ -59,7 +60,7 @@ public class ManualOrderActivity extends Activity {
         mUserInputAddress = LocationUtility.city + LocationUtility.district + address[0] + address[1];
         userLocation.setText(mUserInputAddress);
 
-        mSearchBtn = (ImageView) findViewById(R.id.searchBtn);
+        mSearchBtn = (Button) findViewById(R.id.searchBtn);
         mSearchBtn.setOnClickListener(new OnClickListener() {
 
             @Override
