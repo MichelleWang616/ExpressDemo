@@ -48,11 +48,11 @@
 		        android:layout_height="wrap_content"
 		        android:hint="@string/input_detailed_street_address"/>
 		    <EditText 
-		        android:id="@+id/edit_street_number_"
+		        android:id="@+id/edit_street_number"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:inputType="number"
-				android:text="1" />
+				android:text="10" />
 			<TextView 
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"

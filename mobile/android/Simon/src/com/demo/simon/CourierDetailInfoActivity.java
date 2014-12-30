@@ -127,6 +127,8 @@ public class CourierDetailInfoActivity extends Activity
                 params.add(new BasicNameValuePair("courier_id", mCurCourier.getId()));
                 mUpdateRequestInfoTask.setPostParams(params);
                 mUpdateRequestInfoTask.execute(NetworkManager.getUpdateRequestInfoURL());
+                
+                
             }
 
         });

@@ -39,6 +39,7 @@ public class SendExpressFragment extends Fragment {
     private TextView mCityText = null;
     private TextView mDistrictText = null;
     private EditText mStreetText = null;
+    private EditText mStreetNumberText = null;
 
     private Button mSubmitBtn = null;
     private ProgressBar mProgressBar = null;
@@ -62,6 +63,7 @@ public class SendExpressFragment extends Fragment {
         mCityText = (TextView) rootView.findViewById(R.id.label_city);
         mDistrictText = (TextView) rootView.findViewById(R.id.label_district);
         mStreetText = (EditText) rootView.findViewById(R.id.edit_street);
+        mStreetNumberText = (EditText) rootView.findViewById(R.id.edit_street_number);
         mSubmitBtn = (Button) rootView.findViewById(R.id.btn_submit);
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
         return rootView;
@@ -77,19 +79,18 @@ public class SendExpressFragment extends Fragment {
                 String city = mCityText.getText().toString();
                 String district = mDistrictText.getText().toString();
                 String street = mStreetText.getText().toString();
-                String senderAddress = city + district + street;
+                String streetNumber = mStreetNumberText.getText().toString();
 
                 mAutoRequestCourierTask = new DownloadTask(getActivity());
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("device_id", Utility.getDeviceSerial()));
                 params.add(new BasicNameValuePair("user_name", ""));
-                String location = LocationUtility.latlng.latitude + ", " + LocationUtility.latlng.longitude;
-                params.add(new BasicNameValuePair("location", location));
+                params.add(new BasicNameValuePair("location", LocationUtility.locationString));
                 params.add(new BasicNameValuePair("max_distance", String.valueOf(Utility.getAllowedMaxDistance())));
-                params.add(new BasicNameValuePair("from_address", senderAddress));
+                params.add(new BasicNameValuePair("from_address", LocationUtility.address));
                 params.add(new BasicNameValuePair("to_address", ""));
-                params.add(new BasicNameValuePair("street", LocationUtility.street));
-                params.add(new BasicNameValuePair("street_number", ""));
+                params.add(new BasicNameValuePair("street", street));
+                params.add(new BasicNameValuePair("street_number", streetNumber));
                 params.add(new BasicNameValuePair("company_id", "-1"));
                 params.add(new BasicNameValuePair("comments", ""));
                 mAutoRequestCourierTask.setPostParams(params);
