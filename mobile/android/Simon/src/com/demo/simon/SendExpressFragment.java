@@ -51,10 +51,16 @@ public class SendExpressFragment extends Fragment {
         return "SendExpress";
     }
 
+    private boolean hasUpdated = false;
     public void onLocationLoaded() {
         mCityText.setText(LocationUtility.city);
         mDistrictText.setText(LocationUtility.district);
+    	if (hasUpdated)
+    	{
+    		return;
+    	}
         mStreetText.setText(LocationUtility.street);
+        hasUpdated = true;
     }
 
     @Override

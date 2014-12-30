@@ -10,7 +10,7 @@
 	    android:orientation="vertical">
 	    <TextView 
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" 
+	        android:layout_height="48dp" 
 		    android:textAppearance="@android:style/TextAppearance.Medium"
 		    android:text="@string/current_location" />
 	    <TextView 
@@ -23,10 +23,10 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" />
 		<Button android:id="@+id/searchBtn"
-		    android:layout_width="100dp"
+		    android:layout_width="88dp"
 		    android:layout_height="48dp"
-		    android:layout_gravity="center_horizontal"
-		    android:layout_marginTop="50dp"
+		    android:layout_gravity="center"
+		    android:layout_marginTop="30dp"
 		    android:text="@string/search" />
 	</LinearLayout>
 	<ProgressBar  

@@ -53,4 +53,6 @@
 	<string name="locating">Locating, please wait.</string>
 	<string name="search">Search</string>
 	<string name="network_not_awailable">The network is not available now, please have a check.</string>
+	<string name="unconfirmed">Unconfirmed</string>
+	<string name="confirmed">Confirmed</string>
 </resources>

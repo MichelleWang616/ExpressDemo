@@ -113,7 +113,7 @@ public class MyOrderFragment extends Fragment {
             TextView time = (TextView) convertView.findViewById(R.id.order_time);
             time.setText(option.orderTime);
             TextView status = (TextView) convertView.findViewById(R.id.order_status);
-            status.setText(option.orderStatus);
+            status.setText(getStatusStr(option.orderStatus));
             TextView fromAddress = (TextView) convertView.findViewById(R.id.from_address);
             fromAddress.setText(getContext().getString(R.string.from_address) + option.fromAddress);
             TextView toAddress = (TextView) convertView.findViewById(R.id.to_address);
@@ -124,6 +124,15 @@ public class MyOrderFragment extends Fragment {
             return convertView;
         }
 
+    }
+    
+    private String getStatusStr(String rawStr)
+    {
+    	if (rawStr.equalsIgnoreCase("close"))
+    	{
+    		return getActivity().getString(R.string.confirmed);
+    	}
+    	return getActivity().getString(R.string.unconfirmed);
     }
 
     private DownloadTask mDownloadHistoryOrdersTask = null;
