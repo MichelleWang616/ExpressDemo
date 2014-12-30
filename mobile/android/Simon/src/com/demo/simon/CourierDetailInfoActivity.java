@@ -104,7 +104,7 @@ public class CourierDetailInfoActivity extends Activity
 
             @Override
             public void onClick(View arg0) {
-                if (CourierData.hasNextCourier()) {
+                if (!CourierData.hasNextCourier()) {
                     Toast.makeText(CourierDetailInfoActivity.this, R.string.no_next_courier, Toast.LENGTH_LONG).show();
                     return;
                 }
