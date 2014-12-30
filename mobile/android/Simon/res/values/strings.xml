@@ -16,7 +16,7 @@
     <string name="no_next_courier">No Next courier</string>
     <string name="getting_info">Getting information.</string>
     <string name="confirm">Confirm</string>
-    <string name="request_submitted">Request has been submitted, please wait for the courier.</string>
+    <string name="request_submitted">Request has been confirmed, please wait for the courier.</string>
     <string name="no_matched_courier_please_choose_manully">No matched courier found, please choose manually.</string>
     <string name="courier"> courier </string>
     <string name="can_come_to_fetch"> can come to fetch.</string>

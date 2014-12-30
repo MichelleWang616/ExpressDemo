@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.demo.simon.DownloadTask.DownloadTaskListener;
 import com.demo.simon.data.CourierData;
 import com.demo.simon.datamodel.Courier;
 
@@ -126,6 +127,37 @@ public class CourierDetailInfoActivity extends Activity
                 params.add(new BasicNameValuePair("status", "close"));
                 params.add(new BasicNameValuePair("courier_id", mCurCourier.getId()));
                 mUpdateRequestInfoTask.setPostParams(params);
+                mUpdateRequestInfoTask.setOnDownloadTaskListener(new DownloadTaskListener(){
+
+					@Override
+					public void onTaskPreExecute()
+					{
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onTaskPostExecute(String result)
+					{
+						// TODO Auto-generated method stub
+						try
+						{
+							Toast.makeText(CourierDetailInfoActivity.this, R.string.request_submitted, Toast.LENGTH_SHORT).show();
+							CourierDetailInfoActivity.this.finish();
+						}
+						catch(Exception ex)
+						{
+						}
+					}
+
+					@Override
+					public void onTaskCanceled()
+					{
+						// TODO Auto-generated method stub
+						
+					}
+                	
+                });
                 mUpdateRequestInfoTask.execute(NetworkManager.getUpdateRequestInfoURL());
                 
                 

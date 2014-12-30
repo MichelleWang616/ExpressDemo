@@ -65,7 +65,7 @@ public class SendExpressFragment extends Fragment {
         mStreetText = (EditText) rootView.findViewById(R.id.edit_street);
         mStreetNumberText = (EditText) rootView.findViewById(R.id.edit_street_number);
         mSubmitBtn = (Button) rootView.findViewById(R.id.btn_submit);
-        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBarForAuto);
         return rootView;
     }
 
@@ -76,6 +76,9 @@ public class SendExpressFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
+            	mProgressBar.setVisibility(View.VISIBLE);
+                mProgressBar.bringToFront();
+                
                 String city = mCityText.getText().toString();
                 String district = mDistrictText.getText().toString();
                 String street = mStreetText.getText().toString();
@@ -116,8 +119,8 @@ public class SendExpressFragment extends Fragment {
 
         @Override
         public void onTaskPreExecute() {
-            mProgressBar.setVisibility(View.VISIBLE);
-            mProgressBar.bringToFront();
+//            mProgressBar.setVisibility(View.VISIBLE);
+//            mProgressBar.bringToFront();
         }
 
         @Override

@@ -73,7 +73,7 @@
 	
 	<ProgressBar 
 	    style="@android:style/Widget.ProgressBar.Large.Inverse"
-	    android:id="@+id/progressBar"
+	    android:id="@+id/progressBarForAuto"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_centerInParent="true"
