@@ -184,6 +184,8 @@ AMapLocationListener, Runnable {
 			LocationUtility.city = location.getCity();
 			LocationUtility.address = location.getAddress();
 			LocationUtility.latlng = new LatLng(location.getLatitude(), location.getLongitude());
+			
+			mSendExpressFragment.onLocationLoaded();
 		}
 	}
 	

@@ -50,4 +50,6 @@
 	<string name="no_available_courier">No matched courier found, please search again.</string>
 	<string name="current_location">Current Location</string>
 	<string name="unit_of_street_number">NO</string>
+	<string name="locating">Locating, please wait.</string>
+	<string name="search">Search</string>
 </resources>

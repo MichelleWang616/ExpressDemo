@@ -50,4 +50,6 @@
 	<string name="no_available_courier">没有合适的快递员，请重新筛选。</string>
 	<string name="current_location">所在地址：</string>
 	<string name="unit_of_street_number">号/弄</string>
+	<string name="locating">正在定位中，请稍等。</string>
+	<string name="search">查找</string>
 </resources>
